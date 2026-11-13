@@ -1,0 +1,23 @@
+[Unit]
+Description=MySQL slow log byte attribution exporter (Prometheus)
+After=network-online.target mysql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=slowlog
+Group=adm
+SupplementaryGroups=mysql
+WorkingDirectory=/opt/slowlog-exporter
+StateDirectory=slowlog-exporter
+ExecStart=/opt/slowlog-exporter/venv/bin/python /opt/slowlog-exporter/slowlog_exporter.py --log-file /var/log/mysql/mysql-slow.log --port 9105 --state-file /var/lib/slowlog-exporter/state.json
+Restart=always
+RestartSec=5
+MemoryMax=256M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

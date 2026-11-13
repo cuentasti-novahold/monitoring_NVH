@@ -1,0 +1,153 @@
+# Time: 2026-10-17T13:38:06.900349Z
+# User@Host: report_support[report_support] @  [198.51.100.10]  Id:    19
+# Query_time: 0.000221  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 19 Errno: 0 Killed: 0 Bytes_received: 22 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:06.900128Z End: 2026-10-17T13:38:06.900349Z
+use SUPPORT;
+SET timestamp=1792244286;
+SET NAMES utf8mb4;
+# Time: 2026-10-17T13:38:06.978603Z
+# User@Host: bi_dw[bi_dw] @  [198.51.100.10]  Id:    18
+# Query_time: 0.078649  Lock_time: 0.000021 Rows_sent: 12  Rows_examined: 20000 Thread_id: 18 Errno: 0 Killed: 0 Bytes_received: 128 Bytes_sent: 632 Read_first: 1 Read_last: 0 Read_key: 26 Read_next: 20026 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:06.899954Z End: 2026-10-17T13:38:06.978603Z
+use DW;
+SET timestamp=1792244286;
+SELECT region, product_category, COUNT(*) AS orders, SUM(amount) AS total FROM fact_sales GROUP BY region, product_category;
+# Time: 2026-10-17T13:38:07.040254Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    20
+# Query_time: 0.000191  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 20 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:07.040063Z End: 2026-10-17T13:38:07.040254Z
+SET timestamp=1792244287;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:07.040897Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    20
+# Query_time: 0.000015  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 20 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:07.040882Z End: 2026-10-17T13:38:07.040897Z
+SET timestamp=1792244287;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:07.507386Z
+# User@Host: analyst_multi[analyst_multi] @  [10.20.32.20]  Id:    16
+# Query_time: 0.919600  Lock_time: 0.000015 Rows_sent: 10000  Rows_examined: 10000 Thread_id: 16 Errno: 0 Killed: 0 Bytes_received: 44 Bytes_sent: 2112147 Read_first: 1 Read_last: 0 Read_key: 23 Read_next: 19 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 10000 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:06.587786Z End: 2026-10-17T13:38:07.507386Z
+SET timestamp=1792244286;
+SELECT * FROM FINANCE.payments LIMIT 10000;
+# Time: 2026-10-17T13:38:07.578196Z
+# User@Host: report_support[report_support] @  [198.51.100.10]  Id:    19
+# Query_time: 0.677310  Lock_time: 0.000006 Rows_sent: 20000  Rows_examined: 20000 Thread_id: 19 Errno: 0 Killed: 0 Bytes_received: 40 Bytes_sent: 9858235 Read_first: 1 Read_last: 0 Read_key: 1 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 20000 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:06.900886Z End: 2026-10-17T13:38:07.578196Z
+use SUPPORT;
+SET timestamp=1792244286;
+SELECT * FROM customers LIMIT 20000;
+# Time: 2026-10-17T13:38:12.105525Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    21
+# Query_time: 0.000033  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 21 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:12.105492Z End: 2026-10-17T13:38:12.105525Z
+SET timestamp=1792244292;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:12.105682Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    21
+# Query_time: 0.000004  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 21 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:12.105678Z End: 2026-10-17T13:38:12.105682Z
+SET timestamp=1792244292;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:17.152094Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    22
+# Query_time: 0.000025  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 22 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:17.152069Z End: 2026-10-17T13:38:17.152094Z
+SET timestamp=1792244297;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:17.152235Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    22
+# Query_time: 0.000001  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 22 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:17.152234Z End: 2026-10-17T13:38:17.152235Z
+SET timestamp=1792244297;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:17.589889Z
+# User@Host: app_finance[app_finance] @  [10.20.32.20]  Id:    17
+# Query_time: 0.004199  Lock_time: 0.000005 Rows_sent: 5000  Rows_examined: 5000 Thread_id: 17 Errno: 0 Killed: 0 Bytes_received: 38 Bytes_sent: 1054588 Read_first: 1 Read_last: 0 Read_key: 1 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 5000 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:17.585690Z End: 2026-10-17T13:38:17.589889Z
+use FINANCE;
+SET timestamp=1792244297;
+SELECT * FROM payments LIMIT 5000;
+# Time: 2026-10-17T13:38:22.196090Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    23
+# Query_time: 0.000021  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 23 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:22.196069Z End: 2026-10-17T13:38:22.196090Z
+SET timestamp=1792244302;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:22.196240Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    23
+# Query_time: 0.000003  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 23 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:22.196237Z End: 2026-10-17T13:38:22.196240Z
+SET timestamp=1792244302;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:22.817790Z
+# User@Host: report_support[report_support] @  [198.51.100.10]  Id:    19
+# Query_time: 0.175951  Lock_time: 0.000006 Rows_sent: 20000  Rows_examined: 20000 Thread_id: 19 Errno: 0 Killed: 0 Bytes_received: 40 Bytes_sent: 9858235 Read_first: 1 Read_last: 0 Read_key: 1 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 20000 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:22.641839Z End: 2026-10-17T13:38:22.817790Z
+use SUPPORT;
+SET timestamp=1792244302;
+SELECT * FROM customers LIMIT 20000;
+# Time: 2026-10-17T13:38:27.242798Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    24
+# Query_time: 0.000020  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 24 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:27.242778Z End: 2026-10-17T13:38:27.242798Z
+SET timestamp=1792244307;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:27.242960Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    24
+# Query_time: 0.000004  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 24 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:27.242956Z End: 2026-10-17T13:38:27.242960Z
+SET timestamp=1792244307;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:27.638149Z
+# User@Host: app_finance[app_finance] @  [10.20.32.20]  Id:    17
+# Query_time: 0.004239  Lock_time: 0.000004 Rows_sent: 5000  Rows_examined: 5000 Thread_id: 17 Errno: 0 Killed: 0 Bytes_received: 38 Bytes_sent: 1054588 Read_first: 1 Read_last: 0 Read_key: 1 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 5000 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:27.633910Z End: 2026-10-17T13:38:27.638149Z
+use FINANCE;
+SET timestamp=1792244307;
+SELECT * FROM payments LIMIT 5000;
+# Time: 2026-10-17T13:38:32.285275Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    25
+# Query_time: 0.000021  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 25 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:32.285254Z End: 2026-10-17T13:38:32.285275Z
+SET timestamp=1792244312;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:32.285415Z
+# User@Host: root[root] @  [127.0.0.1]  Id:    25
+# Query_time: 0.000002  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 25 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:32.285413Z End: 2026-10-17T13:38:32.285415Z
+SET timestamp=1792244312;
+# administrator command: Quit;
+# Time: 2026-10-17T13:38:34.192329Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000154  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 30 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.192175Z End: 2026-10-17T13:38:34.192329Z
+SET timestamp=1792244314;
+SET lock_wait_timeout = 2;
+# Time: 2026-10-17T13:38:34.192673Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000052  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 11 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.192621Z End: 2026-10-17T13:38:34.192673Z
+SET timestamp=1792244314;
+# administrator command: Ping;
+# Time: 2026-10-17T13:38:34.192937Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000107  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 1 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 21 Bytes_sent: 69 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.192830Z End: 2026-10-17T13:38:34.192937Z
+SET timestamp=1792244314;
+SELECT @@version;
+# Time: 2026-10-17T13:38:34.193974Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000270  Lock_time: 0.000001 Rows_sent: 5  Rows_examined: 5 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 149 Bytes_sent: 659 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 6 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 1 Start: 2026-10-17T13:38:34.193704Z End: 2026-10-17T13:38:34.193974Z
+SET timestamp=1792244314;
+SELECT
+		  page_size, compress_ops, compress_ops_ok, compress_time, uncompress_ops, uncompress_time
+		  FROM information_schema.innodb_cmp;
+# Time: 2026-10-17T13:38:34.194460Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000229  Lock_time: 0.000001 Rows_sent: 5  Rows_examined: 5 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 208 Bytes_sent: 695 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 6 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 1 Start: 2026-10-17T13:38:34.194231Z End: 2026-10-17T13:38:34.194460Z
+SET timestamp=1792244314;
+SELECT
+                  page_size, buffer_pool_instance, pages_used, pages_free, relocation_ops, relocation_time
+                  FROM information_schema.innodb_cmpmem;
+# Time: 2026-10-17T13:38:34.197289Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.002225  Lock_time: 0.000001 Rows_sent: 494  Rows_examined: 494 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 23 Bytes_sent: 16329 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.195064Z End: 2026-10-17T13:38:34.197289Z
+SET timestamp=1792244314;
+SHOW GLOBAL STATUS;
+# Time: 2026-10-17T13:38:34.202459Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.002783  Lock_time: 0.000000 Rows_sent: 631  Rows_examined: 631 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 26 Bytes_sent: 22038 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 1264 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 1 Start: 2026-10-17T13:38:34.199676Z End: 2026-10-17T13:38:34.202459Z
+SET timestamp=1792244314;
+SHOW GLOBAL VARIABLES;
+# Time: 2026-10-17T13:38:34.204886Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000048  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 26 Errno: 1193 Killed: 0 Bytes_received: 39 Bytes_sent: 64 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.204838Z End: 2026-10-17T13:38:34.204886Z
+SET timestamp=1792244314;
+SELECT @@query_response_time_stats;
+# Time: 2026-10-17T13:38:34.205219Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000099  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 22 Bytes_sent: 2581 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.205120Z End: 2026-10-17T13:38:34.205219Z
+SET timestamp=1792244314;
+SHOW SLAVE STATUS;
+# Time: 2026-10-17T13:38:34.205315Z
+# User@Host: exporter[exporter] @  [10.20.0.5]  Id:    26
+# Query_time: 0.000012  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 0 Thread_id: 26 Errno: 0 Killed: 0 Bytes_received: 5 Bytes_sent: 0 Read_first: 0 Read_last: 0 Read_key: 0 Read_next: 0 Read_prev: 0 Read_rnd: 0 Read_rnd_next: 0 Sort_merge_passes: 0 Sort_range_count: 0 Sort_rows: 0 Sort_scan_count: 0 Created_tmp_disk_tables: 0 Created_tmp_tables: 0 Start: 2026-10-17T13:38:34.205303Z End: 2026-10-17T13:38:34.205315Z

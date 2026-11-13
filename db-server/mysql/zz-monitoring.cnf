@@ -1,0 +1,7 @@
+# Byte attribution monitoring. Install in /etc/mysql/mysql.conf.d/ (read last because of the zz- prefix).
+# Revert: delete this file and run
+#   SET GLOBAL long_query_time = 10; SET GLOBAL log_slow_extra = OFF;
+[mysqld]
+slow_query_log  = ON
+log_slow_extra  = ON
+long_query_time = 0

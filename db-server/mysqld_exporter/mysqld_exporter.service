@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus mysqld_exporter
+After=network-online.target mysql.service
+
+[Service]
+User=mysqld_exporter
+Group=mysqld_exporter
+ExecStart=/usr/local/bin/mysqld_exporter --config.my-cnf=/etc/mysqld_exporter/.my.cnf --web.listen-address=:9104 --collect.perf_schema.eventsstatements
+Restart=on-failure
+MemoryMax=128M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

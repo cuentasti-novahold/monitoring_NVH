@@ -1,0 +1,93 @@
+# Pre-aggregated 5-minute byte totals for the monthly comparison dashboard.
+#
+# Why: a 13-month query over the raw counters (one series per schema, user and
+# client IP, scraped every 30 s) reads hundreds of millions of samples and hits
+# Prometheus query limits. These rollups store one value per 5 minutes per
+# group, so any period total is just sum_over_time(<rule>[<period>]).
+#
+# increase() over consecutive 5-minute windows handles counter resets
+# (exporter restarts). Totals built from it may differ from the raw counters by
+# a few percent at window edges; that is fine for month-over-month comparison.
+# Rules only produce data from the moment they are loaded (no backfill).
+#
+# The alerts that read these rollups are in this same group, AFTER the
+# records. Rule groups are evaluated concurrently, but the rules of one group
+# run in order: in a separate group an alert could read the previous or the
+# current 5-minute rollup depending on timing, and its value would jitter.
+# Here it always sees the rollup computed in the same evaluation.
+
+groups:
+  - name: mysql_egress_rollups
+    interval: 5m
+    rules:
+      - record: schema:mysql_slowlog_bytes_sent:increase5m
+        expr: sum by (schema) (increase(mysql_slowlog_bytes_sent_total[5m]))
+
+      - record: user_client:mysql_slowlog_bytes_sent:increase5m
+        expr: sum by (user, client_ip) (increase(mysql_slowlog_bytes_sent_total[5m]))
+
+      - alert: AttributionCoverageLow
+        # The last guard only skips the warm-up after deployment: it requires
+        # rollup history older than one hour (> 12 five-minute points in the last
+        # 2 h). Gaps inside the last hour, such as an exporter crash-looping,
+        # do not hide the loss (a "mostly filled hour" or single-instant guard would).
+        expr: >-
+          (
+            sum(sum_over_time(schema:mysql_slowlog_bytes_sent:increase5m[1h]))
+              / sum(increase(mysql_global_status_bytes_sent[1h])) < 0.9
+          )
+          and (sum(increase(mysql_global_status_bytes_sent[1h])) > 100e6)
+          and on() (count_over_time(sum(schema:mysql_slowlog_bytes_sent:increase5m)[2h:5m]) > 12)
+        for: 30m
+        labels:
+          severity: critical
+        annotations:
+          summary: The exporter attributes less than 90% of what MySQL sent
+          description: >-
+            Over the last hour the slow log attribution covers
+            {{ $value | humanizePercentage }} of MySQL's own Bytes_sent. Data is
+            being lost (slow log disabled, long_query_time raised, exporter
+            lagging or restarting). Only evaluated when MySQL sent > 100 MB/h, so
+            idle periods (dominated by excluded monitoring users) do not alert.
+
+      - alert: DailyEgressSpike
+        # Daily volume = average 5-minute total x 288 intervals per day. Using
+        # the average (not a sum of samples) keeps the value exact whether the
+        # window holds 287 or 288 samples, and unbiased by short gaps.
+        # The last guard needs 90% of the 8 days filled with rollups (checked
+        # hourly: a 5-minute subquery over days is needlessly heavy): with less
+        # history the 7-day baseline is too small and normal traffic would look
+        # like a spike.
+        expr: >-
+          (
+            sum(avg_over_time(schema:mysql_slowlog_bytes_sent:increase5m[1d])) * 288
+              > 2 * sum(avg_over_time(schema:mysql_slowlog_bytes_sent:increase5m[7d] offset 1d)) * 288
+          )
+          and (sum(avg_over_time(schema:mysql_slowlog_bytes_sent:increase5m[1d])) * 288 > 1e9)
+          and on() (count_over_time(sum(schema:mysql_slowlog_bytes_sent:increase5m)[8d:1h]) >= 0.9 * 192)
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: The last 24 h sent more than twice the daily average of the previous 7 days
+          description: >-
+            Last 24 h: {{ $value | humanize }}B. Look at the "Consumers"
+            table of the monthly dashboard to find who changed. Only evaluated
+            above 1 GB/day.
+
+      # The budget lives ONLY in this expr, in TB per 30 days (> 5 = 5 TB).
+      # The value is the MEASURED total (not a projection), compared exactly;
+      # only the message rounds it. It needs 90% of the 30 days with data; gaps
+      # can only make it under-report, never claim more than was really sent.
+      - alert: MonthlyEgressBudgetExceeded
+        expr: >-
+          (sum(sum_over_time(schema:mysql_slowlog_bytes_sent:increase5m[30d])) / 1e12 > 5)
+          and on() (count_over_time(sum(schema:mysql_slowlog_bytes_sent:increase5m)[30d:1h]) >= 0.9 * 720)
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: The last 30 days exceeded the egress budget
+          description: >-
+            {{ $value | printf "%.2f" }} TB measured in the last 30 days, above the budget set in
+            monitoring/prometheus/rules/egress-rollups.yml (MonthlyEgressBudgetExceeded).
