@@ -503,27 +503,7 @@ sudo systemctl daemon-reload
 
 ---
 
-## 15. Lecciones aprendidas
-
-| Problema | Causa | Cómo evitarlo |
-|---|---|---|
-| El tablero mensual quedó vacío durante días | La carpeta `prometheus/rules` no se copió o no estaba montada en el contenedor: `rule_files` no encontró nada **sin dar error**. | Verificar con `promtool check config` que menciona las reglas y con `/api/v1/rules`. |
-| `permission denied` al leer reglas o tableros | `scp -r` desde Windows creó carpetas sin permiso de lectura para el usuario del contenedor. | `chmod 755` en carpetas y `644` en archivos (paso 4). |
-| La atribución se detuvo tras un reinicio | `SET GLOBAL` no sobrevive al reinicio de MySQL. | Instalar `zz-monitoring.cnf` (paso 9). |
-| Alloy se reinició en bucle | Error de sintaxis en `config.alloy` (por ejemplo, un `\.` sin escapar dentro de comillas dobles). | `sudo alloy fmt` antes de reiniciar. |
-| `alloy fmt` respondió `permission denied` | `/etc/alloy` solo la lee root. | `sudo alloy fmt`. |
-| `Identity file ... not accessible` | PowerShell no estaba en la carpeta de la llave. | `cd` a la carpeta de la llave antes de cada `ssh`/`scp`. |
-| Comillas simples dentro de `ProxyCommand` rompieron la ruta de la llave | SSH toma las comillas como parte del nombre. | Rutas sin espacios ni comillas, o ejecutar desde la carpeta de la llave. |
-| Un agente quedó instalado en el servidor equivocado | Se pegó el comando en la ventana equivocada. | Mirar el prompt antes de pegar. |
-| Diálogo de `needrestart` durante una instalación | Ubuntu 22.04 pregunta qué servicios reiniciar. | `sudo NEEDRESTART_MODE=l apt-get install ...`. Si aparece, elegir **Cancel**. |
-| `CIDR block ... is malformed` | La IP se pegó con un carácter invisible. | Escribir las IP a mano. |
-| Archivos dañados al pegarlos en la terminal | El pegado corta o altera líneas largas. | Copiar archivos con `scp`. |
-| Contraseña compartida en un chat | Quedó expuesta. | Cambiarla de inmediato y guardarla solo en el gestor de contraseñas. |
-| Huecos en los gráficos de noche | El servidor tenía un horario de apagado programado. | Revisar `last -x reboot shutdown` y excluir ese horario de las alertas de disponibilidad. |
-
----
-
-## 16. Mejoras pendientes
+## 15. Mejoras pendientes
 
 | Prioridad | Mejora | Motivo |
 |---|---|---|
