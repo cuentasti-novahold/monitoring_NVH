@@ -19,8 +19,7 @@ Esta guía instala el monitoreo de un servidor MySQL 8 en AWS. Cada paso indica 
 12. [Reglas y tableros](#paso-12-reglas-y-tableros-pc-y-monitoreo)
 13. [Verificación rápida](#13-verificación-rápida)
 14. [Cómo revertir](#14-cómo-revertir)
-15. [Lecciones aprendidas](#15-lecciones-aprendidas)
-16. [Mejoras pendientes](#16-mejoras-pendientes)
+15. [Mejoras pendientes](#16-mejoras-pendientes)
 
 ---
 
